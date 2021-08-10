@@ -4752,9 +4752,9 @@ edge-components@^0.0.31:
   dependencies:
     react-native-linear-gradient "^2.4.0"
 
-"edge-core-js@git://github.com/EdgeApp/edge-core-js.git#2c7e126e64bbbcc831b570a11496d012bcdd7222":
+"edge-core-js@git://github.com/EdgeApp/edge-core-js.git#8d5d962647439cffe9fff833ca17104429ba7bbf":
   version "0.18.2"
-  resolved "git://github.com/EdgeApp/edge-core-js.git#2c7e126e64bbbcc831b570a11496d012bcdd7222"
+  resolved "git://github.com/EdgeApp/edge-core-js.git#8d5d962647439cffe9fff833ca17104429ba7bbf"
   dependencies:
     aes-js "^3.1.0"
     base-x "^1.0.4"
