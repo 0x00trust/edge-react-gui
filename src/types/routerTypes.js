@@ -203,6 +203,7 @@ export type ParamList = {
   settingsOverview: void,
   settingsOverviewTab: void,
   spendingLimits: void,
+  currencySettingsSelectFiat: void,
   termsOfService: void,
   transactionDetails: {|
     edgeTransaction: EdgeTransaction,
