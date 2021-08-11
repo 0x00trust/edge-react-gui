@@ -108,7 +108,7 @@
     "detox": "^18.10.0",
     "disklet": "^0.4.5",
     "edge-components": "^0.0.31",
-    "edge-core-js": "git://github.com/EdgeApp/edge-core-js.git#8d5d962647439cffe9fff833ca17104429ba7bbf",
+    "edge-core-js": "git://github.com/EdgeApp/edge-core-js.git#3c73ded9e5d06fa9bf7a60ab16e80e54cc81cc62",
     "edge-currency-accountbased": "^0.7.65",
     "edge-currency-bitcoin": "^4.9.16",
     "edge-currency-monero": "^0.3.2",
