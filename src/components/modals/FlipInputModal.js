@@ -58,7 +58,8 @@ type DispatchProps = {
 
 type State = {
   overridePrimaryExchangeAmount: string,
-  forceUpdateGuiCounter: number
+  forceUpdateGuiCounter: number,
+  errorMessage?: string
 }
 
 type Props = OwnProps & StateProps & DispatchProps & ThemeProps
@@ -78,6 +79,8 @@ class FlipInputModalComponent extends React.PureComponent<Props, State> {
     const { walletId, currencyCode, updateTransactionAmount } = this.props
     updateTransactionAmount(nativeAmount, exchangeAmount, walletId, currencyCode)
   }
+
+  handleAmountChangeError = (error?: string) => this.setState({ errorMessage: error })
 
   componentDidUpdate(prevProps: Props) {
     if (this.props.forceUpdateGuiCounter !== this.state.forceUpdateGuiCounter) {
@@ -106,8 +109,9 @@ class FlipInputModalComponent extends React.PureComponent<Props, State> {
   }
 
   renderExchangeRates = () => {
-    const { primaryInfo, secondaryInfo, fiatPerCrypto, errorMessage, theme } = this.props
+    const { primaryInfo, secondaryInfo, fiatPerCrypto, theme } = this.props
     const styles = getStyles(theme)
+    const errorMessage = this.state.errorMessage ?? this.props.errorMessage
     return (
       <View style={styles.exchangeRateContainer}>
         {errorMessage ? (
@@ -147,6 +151,7 @@ class FlipInputModalComponent extends React.PureComponent<Props, State> {
             overridePrimaryExchangeAmount={overridePrimaryExchangeAmount}
             forceUpdateGuiCounter={0}
             onExchangeAmountChanged={this.handleExchangeAmountChange}
+            onError={this.handleAmountChangeError}
             onNext={this.handleCloseModal}
             keyboardVisible={false}
             isFocus
