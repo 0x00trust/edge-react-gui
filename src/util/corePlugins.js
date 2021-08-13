@@ -65,7 +65,7 @@ export const currencyPlugins = {
 }
 
 export const ratePlugins = {
-  coingecko: true,
+  coingecko: false,
   edgeRates: true
 }
 
