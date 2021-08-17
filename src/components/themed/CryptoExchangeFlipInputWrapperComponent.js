@@ -33,8 +33,13 @@ export type Props = {
   children?: React.Node
 }
 
-class CryptoExchangeFlipInputWrapperComponent extends React.Component<Props & ThemeProps> {
+type State = {
+  error?: string
+}
+
+class CryptoExchangeFlipInputWrapperComponent extends React.Component<Props & ThemeProps, State> {
   launchSelector = () => {
+    this.onError()
     this.props.launchWalletSelector()
   }
 
@@ -49,6 +54,13 @@ class CryptoExchangeFlipInputWrapperComponent extends React.Component<Props & Th
         <Image style={styles.currencyIcon} source={{ uri: logo || '' }} />
       </View>
     )
+  }
+
+  onError = (error?: string) => this.setState({ error })
+
+  focusMe = () => {
+    this.onError()
+    this.props.focusMe()
   }
 
   render() {
@@ -79,7 +91,7 @@ class CryptoExchangeFlipInputWrapperComponent extends React.Component<Props & Th
             <SelectableRow
               autoWidth
               arrowTappable
-              onPress={this.props.focusMe}
+              onPress={this.focusMe}
               icon={this.renderLogo(this.props.currencyLogo)}
               title={
                 <EdgeText style={styles.iconText} numberOfLines={1}>
@@ -93,26 +105,30 @@ class CryptoExchangeFlipInputWrapperComponent extends React.Component<Props & Th
     }
 
     return (
-      <Card>
-        <ExchangedFlipInput
-          onNext={onNext}
-          onFocus={this.props.onFocus}
-          onBlur={this.props.onBlur}
-          headerText={this.props.headerText}
-          headerLogo={this.props.currencyLogo}
-          headerCallback={this.launchSelector}
-          primaryCurrencyInfo={primaryCurrencyInfo}
-          secondaryCurrencyInfo={secondaryCurrencyInfo}
-          exchangeSecondaryToPrimaryRatio={fiatPerCrypto}
-          overridePrimaryExchangeAmount={overridePrimaryExchangeAmount}
-          forceUpdateGuiCounter={forceUpdateGuiCounter}
-          onExchangeAmountChanged={this.onExchangeAmountChanged}
-          keyboardVisible={false}
-          isFiatOnTop
-          isFocus={false}
-        />
-        {children}
-      </Card>
+      <>
+        {this.state?.error != null ? <EdgeText style={styles.errorText}>{this.state.error ?? ''}</EdgeText> : null}
+        <Card>
+          <ExchangedFlipInput
+            onNext={onNext}
+            onFocus={this.props.onFocus}
+            onBlur={this.props.onBlur}
+            headerText={this.props.headerText}
+            headerLogo={this.props.currencyLogo}
+            headerCallback={this.launchSelector}
+            primaryCurrencyInfo={primaryCurrencyInfo}
+            secondaryCurrencyInfo={secondaryCurrencyInfo}
+            exchangeSecondaryToPrimaryRatio={fiatPerCrypto}
+            overridePrimaryExchangeAmount={overridePrimaryExchangeAmount}
+            forceUpdateGuiCounter={forceUpdateGuiCounter}
+            onExchangeAmountChanged={this.onExchangeAmountChanged}
+            onError={this.onError}
+            keyboardVisible={false}
+            isFiatOnTop
+            isFocus={false}
+          />
+          {children}
+        </Card>
+      </>
     )
   }
 }
@@ -165,6 +181,12 @@ const getStyles = cacheStyles((theme: Theme) => ({
     color: theme.primaryText,
     fontFamily: theme.fontFaceBold,
     fontSize: theme.rem(1.25)
+  },
+  errorText: {
+    alignSelf: 'flex-start',
+    marginLeft: theme.rem(1),
+    marginBottom: theme.rem(0.75),
+    color: theme.dangerText
   }
 }))
 
