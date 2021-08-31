@@ -14,6 +14,8 @@ import { type ContactsPermissionResult, ContactsPermissionModal } from '../modal
 import { Airship, showError } from './AirshipInstance.js'
 
 const IS_CONTACTS_PERMISSION_SHOWN_BEFORE = 'IS_CONTACTS_PERMISSION_SHOWN_BEFORE'
+const SETTINGS_PERMISSION_LIMITS = 'SETTINGS_PERMISSION_LIMIT'
+const SETTINGS_PERMISSION_QUANTITY = 3
 
 const PLATFORM = {
   ios: 'IOS',
@@ -111,6 +113,11 @@ export async function requestPermission(data: Permission): Promise<PermissionSta
 }
 
 export async function enablePermissionOnSettings(data: Permission, name: string): Promise<void> {
+  const permissionLimits = await AsyncStorage.getItem(SETTINGS_PERMISSION_LIMITS)
+  const permissionLimit = permissionLimits != null && JSON.parse(permissionLimits)[data] != null ? JSON.parse(permissionLimits)[data] : 0
+
+  if (permissionLimit >= SETTINGS_PERMISSION_QUANTITY) return
+
   const status: PermissionStatus = await check(PERMISSIONS[OS][PERMISSIONS_ITEM[data]])
 
   if (status === RESULTS.DENIED) {
@@ -125,8 +132,15 @@ export async function enablePermissionOnSettings(data: Permission, name: string)
         buttons={{ ok: { label: s.strings.string_ok_cap } }}
       />
     )).then(result => {
+      AsyncStorage.setItem(
+        SETTINGS_PERMISSION_LIMITS,
+        JSON.stringify({
+          ...JSON.parse(permissionLimits),
+          [data]: permissionLimit + 1
+        })
+      ).catch(showError)
       if (result === 'ok') {
-        return openSettings().catch(showError)
+        openSettings().catch(showError)
       }
     })
   }
