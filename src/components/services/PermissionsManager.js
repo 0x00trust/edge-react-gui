@@ -3,10 +3,13 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import * as React from 'react'
 import { AppState, Platform } from 'react-native'
-import { check, checkMultiple, PERMISSIONS, request, RESULTS } from 'react-native-permissions'
+import { check, checkMultiple, openSettings, PERMISSIONS, request, RESULTS } from 'react-native-permissions'
+import { sprintf } from 'sprintf-js'
 
+import s from '../../locales/strings.js'
 import { type Permission, type PermissionsState, type PermissionStatus } from '../../reducers/PermissionsReducer.js'
 import { connect } from '../../types/reactRedux.js'
+import { ButtonsModal } from '../modals/ButtonsModal.js'
 import { type ContactsPermissionResult, ContactsPermissionModal } from '../modals/ContactsPermissionModal.js'
 import { Airship, showError } from './AirshipInstance.js'
 
@@ -105,6 +108,28 @@ export async function requestPermission(data: Permission): Promise<PermissionSta
     return request(PERMISSIONS[OS][PERMISSIONS_ITEM[data]])
   }
   return status
+}
+
+export async function enablePermissionOnSettings(data: Permission, name: string): Promise<void> {
+  const status: PermissionStatus = await check(PERMISSIONS[OS][PERMISSIONS_ITEM[data]])
+
+  if (status === RESULTS.DENIED) {
+    return requestPermission(data)
+  }
+
+  if (status === RESULTS.BLOCKED) {
+    Airship.show(bridge => (
+      <ButtonsModal
+        bridge={bridge}
+        message={sprintf(s.strings.contacts_permission_modal_enable_settings, name, data.toLowerCase())}
+        buttons={{ ok: { label: s.strings.string_ok_cap } }}
+      />
+    )).then(result => {
+      if (result === 'ok') {
+        return openSettings().catch(showError)
+      }
+    })
+  }
 }
 
 export const PermissionsManager = connect<StateProps, DispatchProps, {}>(
