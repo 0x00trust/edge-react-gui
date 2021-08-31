@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { Image, View } from 'react-native'
+import { View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import { FIO_ADDRESS_LIST } from '../../constants/SceneKeys.js'
 import { formatDate } from '../../locales/intl.js'
@@ -29,7 +30,7 @@ class FioAddressRegistered extends React.Component<Props> {
         <View style={styles.view}>
           <View style={styles.texts}>
             <View style={styles.image}>
-              <Image source={theme.fioAddressLogo} />
+              <FastImage source={theme.fioAddressLogo} />
             </View>
             <T style={styles.text}>{s.strings.fio_address_details_screen_registered}</T>
             <T style={styles.title}>{fioName}</T>

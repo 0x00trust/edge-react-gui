@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { Image, ScrollView, StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import WalletIcon from '../../assets/images/createWallet/wallet_icon_lg.png'
 import { CREATE_WALLET_IMPORT, CREATE_WALLET_SELECT_FIAT } from '../../constants/SceneKeys.js'
@@ -15,7 +16,6 @@ import { THEME } from '../../theme/variables/airbitz.js'
 import { PLATFORM } from '../../theme/variables/platform.js'
 import { type RouteProp, Actions } from '../../types/routerTypes.js'
 import { scale } from '../../util/scaling.js'
-
 type OwnProps = {
   route: RouteProp<'createWalletChoice'>
 }
@@ -46,7 +46,7 @@ export class CreateWalletChoiceComponent extends React.PureComponent<Props> {
           <Gradient style={styles.gradient} />
           <ScrollView>
             <View style={styles.view}>
-              <Image source={WalletIcon} style={styles.currencyLogo} resizeMode="cover" />
+              <FastImage source={WalletIcon} style={styles.currencyLogo} resizeMode="cover" />
               <View style={styles.createWalletPromptArea}>
                 <Text style={styles.instructionalText}>{s.strings.create_wallet_choice_instructions}</Text>
               </View>

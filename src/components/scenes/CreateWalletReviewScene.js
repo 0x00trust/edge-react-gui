@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { Image, Keyboard, View } from 'react-native'
+import { Keyboard, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import { createCurrencyWallet } from '../../actions/CreateWalletActions.js'
 import CheckIcon from '../../assets/images/createWallet/check_icon_lg.png'
@@ -94,7 +95,7 @@ class CreateWalletReviewComponent extends React.Component<Props, State> {
         ) : (
           <FullScreenTransitionComponent
             onDone={this.goToWalletList}
-            image={<Image source={CheckIcon} style={styles.currencyLogo} resizeMode="cover" />}
+            image={<FastImage source={CheckIcon} style={styles.currencyLogo} resizeMode="cover" />}
             text={<EdgeText style={styles.createWalletImportTransitionText}>{s.strings.create_wallet_import_successful}</EdgeText>}
           />
         )}

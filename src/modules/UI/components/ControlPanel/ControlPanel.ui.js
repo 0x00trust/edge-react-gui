@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { Image, Keyboard, Text, View } from 'react-native'
+import { Keyboard, Text, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
 import accountIcon from '../../../../assets/images/sidenav/accounts.png'
@@ -92,7 +93,7 @@ class ControlPanelComponent extends React.Component<Props> {
     return (
       <SceneWrapper hasHeader={false} hasTabs={false}>
         <View style={styles.header}>
-          {!!currencyLogo && <Image style={styles.iconImage} source={currencyLogoIcon} />}
+          {!!currencyLogo && <FastImage style={styles.iconImage} source={currencyLogoIcon} />}
           <View style={styles.exchangeContainer}>
             {!zeroString(exchangeRate) ? (
               <ExchangeRate primaryInfo={primaryCurrencyInfo} secondaryInfo={secondaryCurrencyInfo} secondaryDisplayAmount={secondaryToPrimaryRatio} />
@@ -105,7 +106,7 @@ class ControlPanelComponent extends React.Component<Props> {
         <Button onPress={this.toggleUserList} style={styles.toggleButton} underlayColor={styles.underlay.color}>
           <Button.Row>
             <Button.Left>
-              <Image style={styles.iconImage} resizeMode="contain" source={accountIcon} />
+              <FastImage style={styles.iconImage} resizeMode="contain" source={accountIcon} />
             </Button.Left>
 
             <Button.Center>

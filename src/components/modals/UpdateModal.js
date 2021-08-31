@@ -1,8 +1,9 @@
 // @flow
 
 import * as React from 'react'
-import { Image, Text, TouchableHighlight, View } from 'react-native'
+import { Text, TouchableHighlight, View } from 'react-native'
 import { type AirshipBridge } from 'react-native-airship'
+import FastImage from 'react-native-fast-image'
 
 import edgeLogo from '../../assets/images/edgeLogo/Edge_logo_Icon.png'
 import s from '../../locales/strings.js'
@@ -35,7 +36,7 @@ export class UpdateModal extends React.Component<Props> {
               backgroundColor: THEME.COLORS.PRIMARY
             }}
           >
-            <Image source={edgeLogo} />
+            <FastImage source={edgeLogo} />
           </View>
         </IconCircle>
 

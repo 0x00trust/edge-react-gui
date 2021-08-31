@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { Image, Platform, ScrollView, Text, View } from 'react-native'
+import { Platform, ScrollView, Text, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import Share from 'react-native-share'
 import { sprintf } from 'sprintf-js'
 
@@ -126,7 +127,7 @@ const BuyButton = () => {
       <Button.Row>
         <Button.Row>
           <Button.Left>
-            <Image source={buysellIcon} style={styles.iconImage} />
+            <FastImage source={buysellIcon} style={styles.iconImage} />
           </Button.Left>
 
           <Button.Center>
@@ -147,7 +148,7 @@ const SellButton = () => {
       <Button.Row>
         <Button.Row>
           <Button.Left>
-            <Image source={sellIcon} style={styles.iconImage} />
+            <FastImage source={sellIcon} style={styles.iconImage} />
           </Button.Left>
 
           <Button.Center>
@@ -168,7 +169,7 @@ const WalletsButton = () => {
       <Button.Row>
         <Button.Row>
           <Button.Left>
-            <Image source={walletIcon} style={styles.iconImage} />
+            <FastImage source={walletIcon} style={styles.iconImage} />
           </Button.Left>
 
           <Button.Center>
@@ -191,7 +192,7 @@ const ScanButton = () => {
     <Button onPress={popToSendScan}>
       <Button.Row>
         <Button.Left>
-          <Image source={scanIcon} style={styles.iconImage} />
+          <FastImage source={scanIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -227,7 +228,7 @@ const SweepPrivateKeyButton = (props: SweepPrivateKeyButtonProps) => {
     <Button onPress={handlePress}>
       <Button.Row>
         <Button.Left>
-          <Image source={sweepIcon} style={styles.iconImage} />
+          <FastImage source={sweepIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -246,7 +247,7 @@ const RequestButton = () => {
     <Button onPress={popToRequestScene}>
       <Button.Row>
         <Button.Left>
-          <Image source={receiveIcon} style={styles.iconImage} />
+          <FastImage source={receiveIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -265,7 +266,7 @@ const ExchangeButton = () => {
     <Button onPress={popToExchangeScene}>
       <Button.Row>
         <Button.Left>
-          <Image source={exchangeIcon} style={styles.iconImage} />
+          <FastImage source={exchangeIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -284,7 +285,7 @@ const TermsOfServiceButton = () => {
     <Button onPress={popToTermsOfServiceScene}>
       <Button.Row>
         <Button.Left>
-          <Image source={termsIcon} style={styles.iconImage} />
+          <FastImage source={termsIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -311,7 +312,7 @@ const ShareButton = () => {
     <Button onPress={shareApp}>
       <Button.Row>
         <Button.Left>
-          <Image source={shareIcon} style={styles.iconImage} />
+          <FastImage source={shareIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -330,7 +331,7 @@ const SettingsButton = () => {
     <Button onPress={popToSettingsScene}>
       <Button.Row>
         <Button.Left>
-          <Image style={[styles.iconImage, { height: scale(20), width: scale(20) }]} source={settings} />
+          <FastImage style={[styles.iconImage, { height: scale(20), width: scale(20) }]} source={settings} />
         </Button.Left>
 
         <Button.Center>
@@ -353,7 +354,7 @@ const LogoutButton = (props: LogoutButtonProps) => {
     <Button onPress={onPress}>
       <Button.Row>
         <Button.Left>
-          <Image style={[styles.iconImage, { height: scale(20), width: scale(20) }]} source={logoutImage} />
+          <FastImage style={[styles.iconImage, { height: scale(20), width: scale(20) }]} source={logoutImage} />
         </Button.Left>
 
         <Button.Center>
@@ -374,7 +375,7 @@ const FioAddressButton = () => {
     <Button onPress={goToFioNamesScene}>
       <Button.Row>
         <Button.Left>
-          <Image source={fioAddressIcon} style={styles.iconImage} />
+          <FastImage source={fioAddressIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>
@@ -393,7 +394,7 @@ const FioRequestsButton = () => {
     <Button onPress={goToFioRequestsScene}>
       <Button.Row>
         <Button.Left>
-          <Image source={fioRequestsIcon} style={styles.iconImage} />
+          <FastImage source={fioRequestsIcon} style={styles.iconImage} />
         </Button.Left>
 
         <Button.Center>

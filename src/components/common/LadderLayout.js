@@ -1,8 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { Image, Text, View } from 'react-native'
-
+import { Text, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 type Props = {
   children: React.Node,
 
@@ -67,5 +67,5 @@ export function LadderLayout(props: Props) {
 }
 
 function isStyled(element) {
-  return React.isValidElement(element) && (element.type === Image || element.type === Text || element.type === View || element.props.style != null)
+  return React.isValidElement(element) && (element.type === FastImage || element.type === Text || element.type === View || element.props.style != null)
 }

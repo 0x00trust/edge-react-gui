@@ -2,7 +2,8 @@
 
 import type { EdgeCurrencyWallet } from 'edge-core-js'
 import * as React from 'react'
-import { ActivityIndicator, Image, ScrollView, View } from 'react-native'
+import { ActivityIndicator, ScrollView, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import IonIcon from 'react-native-vector-icons/Ionicons'
 
 import { refreshAllFioAddresses } from '../../actions/FioAddressActions.js'
@@ -131,7 +132,7 @@ class FioAddressList extends React.Component<Props, LocalState> {
                   key={`${address.name}`}
                   name={address.name}
                   expiration={address.expiration}
-                  icon={<Image source={fioAddressLogo} style={styles.iconImg} />}
+                  icon={<FastImage source={fioAddressLogo} style={styles.iconImg} />}
                   theme={theme}
                   onPress={() => this.onAddressPress(address)}
                 />

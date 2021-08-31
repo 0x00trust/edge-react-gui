@@ -2,7 +2,8 @@
 
 import { type EdgeCurrencyConfig, type EdgeCurrencyWallet } from 'edge-core-js'
 import * as React from 'react'
-import { ActivityIndicator, Image, ScrollView, View } from 'react-native'
+import { ActivityIndicator, ScrollView, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import { sprintf } from 'sprintf-js'
 
 import { createFioWallet } from '../../actions/FioAddressActions.js'
@@ -388,7 +389,7 @@ class FioAddressRegister extends React.Component<Props, State> {
     return (
       <SceneWrapper background="theme">
         <SceneHeader style={styles.header} title={s.strings.title_fio_address_confirmation}>
-          <Image source={theme.fioAddressLogo} style={styles.image} resizeMode="cover" />
+          <FastImage source={theme.fioAddressLogo} style={styles.image} resizeMode="cover" />
         </SceneHeader>
         {/* eslint-disable-next-line react/no-string-refs */}
         <ScrollView ref="_scrollView">

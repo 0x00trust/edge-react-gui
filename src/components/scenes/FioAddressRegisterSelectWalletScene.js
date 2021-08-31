@@ -3,7 +3,8 @@
 import { bns } from 'biggystring'
 import { type EdgeCurrencyConfig, type EdgeCurrencyWallet, type EdgeDenomination, type EdgeTransaction } from 'edge-core-js'
 import * as React from 'react'
-import { ActivityIndicator, Alert, Image, ScrollView, View } from 'react-native'
+import { ActivityIndicator, Alert, ScrollView, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import { sprintf } from 'sprintf-js'
 
 import { FIO_NAME_CONFIRM, SEND, WALLET_LIST } from '../../constants/SceneKeys.js'
@@ -225,7 +226,7 @@ class FioAddressRegisterSelectWallet extends React.Component<Props, LocalState> 
       <SceneWrapper background="theme">
         <ScrollView>
           <View style={styles.header}>
-            <Image source={theme.fioAddressLogo} style={styles.image} resizeMode="cover" />
+            <FastImage source={theme.fioAddressLogo} style={styles.image} resizeMode="cover" />
             <EdgeText style={styles.instructionalText} numberOfLines={10}>
               {detailsText}
             </EdgeText>

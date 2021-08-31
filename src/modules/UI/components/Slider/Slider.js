@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { ActivityIndicator, Image, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { Easing, runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 
@@ -122,7 +123,7 @@ export const SliderComponent = (props: Props) => {
 
         <PanGestureHandler onGestureEvent={onGestureEvent}>
           <Animated.View style={[styles.thumb, sliderDisabled ? styles.disabledThumb : null, scrollTranslationStyle]}>
-            <Image source={leftArrowImg} />
+            <FastImage source={leftArrowImg} />
           </Animated.View>
         </PanGestureHandler>
         {showSpinner ? (

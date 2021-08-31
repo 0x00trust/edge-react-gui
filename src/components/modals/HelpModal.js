@@ -1,9 +1,10 @@
 // @flow
 
 import * as React from 'react'
-import { Image, Linking, View } from 'react-native'
+import { Linking, View } from 'react-native'
 import { type AirshipBridge } from 'react-native-airship'
 import { getBuildNumber, getVersion } from 'react-native-device-info'
+import FastImage from 'react-native-fast-image'
 import { WebView } from 'react-native-webview'
 
 import edgeLogo from '../../assets/images/edgeLogo/Edge_logo_L.png'
@@ -70,7 +71,7 @@ class HelpModalComponent extends React.Component<Props & ThemeProps> {
     return (
       <ThemedModal bridge={bridge} onCancel={this.handleClose} paddingRem={[1, 0]}>
         <View style={styles.titleContainer}>
-          <Image source={edgeLogo} style={styles.logo} resizeMode="contain" />
+          <FastImage source={edgeLogo} style={styles.logo} resizeMode="contain" />
           <ModalTitle center paddingRem={[0, 1, 1]}>
             {s.strings.help_modal_title}
           </ModalTitle>

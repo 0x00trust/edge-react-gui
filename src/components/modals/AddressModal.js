@@ -2,8 +2,9 @@
 
 import type { EdgeAccount, EdgeCurrencyConfig, EdgeCurrencyWallet } from 'edge-core-js'
 import * as React from 'react'
-import { ActivityIndicator, FlatList, Image, TouchableWithoutFeedback, View } from 'react-native'
+import { ActivityIndicator, FlatList, TouchableWithoutFeedback, View } from 'react-native'
 import { type AirshipBridge } from 'react-native-airship'
+import FastImage from 'react-native-fast-image'
 import { sprintf } from 'sprintf-js'
 
 import { refreshAllFioAddresses } from '../../actions/FioAddressActions.js'
@@ -294,7 +295,7 @@ class AddressModalComponent extends React.Component<Props, State> {
     return (
       <TouchableWithoutFeedback onPress={() => this.onPressFioAddress(item)}>
         <View style={styles.rowContainer}>
-          <Image source={addressType} style={styles.fioAddressAvatarContainer} resizeMode="cover" />
+          <FastImage source={addressType} style={styles.fioAddressAvatarContainer} resizeMode="cover" />
           <Text style={styles.fioAddressText}>{item}</Text>
         </View>
       </TouchableWithoutFeedback>

@@ -2,7 +2,8 @@
 
 import { type EdgeCurrencyInfo } from 'edge-core-js'
 import * as React from 'react'
-import { ActivityIndicator, Image, ScrollView } from 'react-native'
+import { ActivityIndicator, ScrollView } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import { CURRENCY_NOTIFICATION_SETTINGS } from '../../constants/SceneKeys.js'
 import s from '../../locales/strings'
@@ -96,7 +97,7 @@ class NotificationComponent extends React.Component<Props, State> {
             {this.props.currencyInfos.map((currencyInfo: EdgeCurrencyInfo) => {
               const { displayName, currencyCode } = currencyInfo
               const { symbolImage } = getCurrencyIcon(currencyCode)
-              const icon = <Image style={styles.currencyLogo} source={{ uri: symbolImage }} />
+              const icon = <FastImage style={styles.currencyLogo} source={{ uri: symbolImage }} />
               const onPress = () =>
                 enabled
                   ? Actions.push(CURRENCY_NOTIFICATION_SETTINGS, {

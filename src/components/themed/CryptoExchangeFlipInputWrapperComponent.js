@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { ActivityIndicator, Image, View } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import type { GuiCurrencyInfo, GuiWallet } from '../../types/types.js'
 import { type Theme, type ThemeProps, cacheStyles, withTheme } from '../services/ThemeContext.js'
@@ -46,7 +47,7 @@ class CryptoExchangeFlipInputWrapperComponent extends React.Component<Props & Th
     const styles = getStyles(this.props.theme)
     return (
       <View style={styles.iconContainer}>
-        <Image style={styles.currencyIcon} source={{ uri: logo || '' }} />
+        <FastImage style={styles.currencyIcon} source={{ uri: logo || '' }} />
       </View>
     )
   }

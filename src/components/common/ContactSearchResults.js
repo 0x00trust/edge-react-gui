@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import { FlatList, Image, StyleSheet, TouchableHighlight, View } from 'react-native'
+import { FlatList, StyleSheet, TouchableHighlight, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import ContactImage from '../../assets/images/contact.png'
 import FormattedText from '../../modules/UI/components/FormattedText/FormattedText.ui.js'
@@ -60,9 +61,9 @@ export class ContactSearchResults extends React.Component<Props> {
             <View style={styles.contactLeft}>
               <View style={styles.contactLogo}>
                 {thumbnailPath ? (
-                  <Image source={{ uri: thumbnailPath }} style={styles.contactThumbnail} />
+                  <FastImage source={{ uri: thumbnailPath }} style={styles.contactThumbnail} />
                 ) : (
-                  <Image source={ContactImage} style={styles.contactThumbnail} />
+                  <FastImage source={ContactImage} style={styles.contactThumbnail} />
                 )}
               </View>
               <View style={styles.contactLeftTextWrap}>

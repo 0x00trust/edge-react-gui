@@ -2,7 +2,8 @@
 
 import { type EdgeAccount } from 'edge-core-js/types'
 import * as React from 'react'
-import { Image, ScrollView, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
 
 import { exchangeTimerExpired, shiftCryptoCurrency } from '../../actions/CryptoExchangeActions'
 import { swapPluginIcons } from '../../assets/images/exchange'
@@ -226,7 +227,7 @@ class CryptoExchangeQuoteScreenComponent extends React.Component<Props, State> {
           />
           <View style={styles.pluginRowPoweredByRow}>
             <EdgeText style={styles.footerText}>{s.strings.plugin_powered_by + ' '}</EdgeText>
-            <Image style={styles.partnerIconImage} resizeMode="contain" source={swapPluginIcons[quote.pluginId]} />
+            <FastImage style={styles.partnerIconImage} resizeMode="contain" source={swapPluginIcons[quote.pluginId]} />
             <EdgeText style={styles.footerText}>{' ' + exchangeName}</EdgeText>
           </View>
           {quote.isEstimate && (

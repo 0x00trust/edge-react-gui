@@ -2,8 +2,9 @@
 
 import { type EdgeSwapConfig, type EdgeSwapInfo } from 'edge-core-js/types'
 import * as React from 'react'
-import { Image, Linking, Text, View } from 'react-native'
+import { Linking, Text, View } from 'react-native'
 import { type AirshipBridge } from 'react-native-airship'
+import FastImage from 'react-native-fast-image'
 
 import { swapPluginIcons } from '../../assets/images/exchange'
 import s from '../../locales/strings.js'
@@ -47,7 +48,7 @@ function SwapVerifyTermsModal(props: Props) {
   return (
     <AirshipModal bridge={bridge} onCancel={() => bridge.resolve(false)}>
       <IconCircle>
-        <Image source={swapPluginIcons[pluginId]} resizeMode="contain" style={{ height: iconSize, width: iconSize }} />
+        <FastImage source={swapPluginIcons[pluginId]} resizeMode="contain" style={{ height: iconSize, width: iconSize }} />
       </IconCircle>
 
       <ContentArea padding="wide">
