@@ -16,7 +16,7 @@ import { bestOfPlugins } from '../../util/ReferralHelpers.js'
 import { SceneWrapper } from '../common/SceneWrapper.js'
 import { setPluginScene } from '../navigation/GuiPluginBackButton.js'
 import { showError, showToast } from '../services/AirshipInstance.js'
-import { requestPermission } from '../services/PermissionsManager.js'
+import { enablePermissionOnSettings, requestPermission } from '../services/PermissionsManager.js'
 
 // WebView bridge managemer --------------------------------------------
 
@@ -198,6 +198,9 @@ class GuiPluginView extends React.Component<Props, State> {
     const { plugin } = route.params
     const { permissions = [] } = plugin
     for (const name of permissions) await requestPermission(name)
+    if (plugin.settingsPermission) {
+      for (const name of permissions) await enablePermissionOnSettings(name, plugin.displayName)
+    }
   }
 
   goBack(): boolean {
