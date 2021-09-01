@@ -604,7 +604,7 @@ export class MainComponent extends React.Component<Props> {
             <Scene
               key={CURRENCY_SETTINGS_SELECT_FIAT}
               navTransparent
-              component={ifLoggedIn(SelectFiatScene)}
+              component={ifLoggedIn(CreateWalletSelectFiatScene)}
               renderLeftButton={<BackButton onPress={this.handleBack} />}
               renderRightButton={this.renderEmptyButton()}
             />

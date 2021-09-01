@@ -30,8 +30,7 @@ type OwnProps = {
   title?: string,
   isFioOnly?: boolean,
   useUserFioAddressesOnly?: boolean,
-  checkAddressConnected?: boolean,
-  showSearchIcon?: boolean
+  checkAddressConnected?: boolean
 }
 
 type StateProps = {
@@ -338,7 +337,6 @@ class AddressModalComponent extends React.Component<Props, State> {
             ref={this.textInput}
             error={fieldError}
             blurOnSubmit
-            showSearchIcon={showSearchIcon}
           />
           {!userFioAddressesLoading ? (
             <FlatList
