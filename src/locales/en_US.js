@@ -839,6 +839,10 @@ const strings = {
   // Request Scene
   request_balance: 'You have %s',
 
+  // Crypto Exchange Scene
+  exchange_insufficient_funds: 'Insufficient Funds',
+  exchange_insufficient_funds_below_balance: 'Wallet balance is below the amount entered.',
+
   // Currency Labels
   currency_label_AFN: 'Afghani',
   currency_label_ALL: 'Lek',

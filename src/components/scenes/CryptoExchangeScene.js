@@ -137,6 +137,19 @@ class CryptoExchangeComponent extends React.Component<Props, State> {
     showError(`${s.strings.no_exchange_amount}. ${s.strings.select_exchange_amount}.`)
   }
 
+  checkExceedsAmount(): boolean {
+    const { fromWallet, fromCurrencyCode, toWallet, toCurrencyCode } = this.props
+    const { fromAmountNative, toAmountNative, whichWalletFocus } = this.state
+    const fromNativeBalance = fromWallet.nativeBalances[fromCurrencyCode] ?? '0'
+    const toNativeBalance = toWallet.nativeBalances[toCurrencyCode] ?? '0'
+
+    return whichWalletFocus === 'from' && bns.gt(fromNativeBalance, '0')
+      ? bns.gt(fromAmountNative, fromNativeBalance)
+      : whichWalletFocus === 'to' && bns.gt(toNativeBalance, '0')
+      ? bns.gt(toAmountNative, toNativeBalance)
+      : false
+  }
+
   launchFromWalletSelector = () => {
     this.renderDropUp('from')
   }
@@ -173,6 +186,7 @@ class CryptoExchangeComponent extends React.Component<Props, State> {
     const primaryNativeAmount = this.state.whichWalletFocus === 'from' ? this.state.fromAmountNative : this.state.toAmountNative
     const showNext = this.props.fromCurrencyCode !== '' && this.props.toCurrencyCode !== '' && !this.props.calculatingMax && !!parseFloat(primaryNativeAmount)
     if (!showNext) return null
+    if (this.checkExceedsAmount()) return null
     return <MainButton label={s.strings.string_next_capitalized} type="secondary" marginRem={[1.5, 0, 0]} paddingRem={[0.5, 2.3]} onPress={this.getQuote} />
   }
 
@@ -187,6 +201,13 @@ class CryptoExchangeComponent extends React.Component<Props, State> {
     if (minimumPopupModals && primaryNativeBalance < minimumPopupModals.minimumNativeBalance) {
       return <Alert marginRem={[1.5, 1]} title={s.strings.request_minimum_notification_title} message={minimumPopupModals.alertMessage} type="warning" />
     }
+
+    if (this.checkExceedsAmount()) {
+      return (
+        <Alert marginRem={[1.5, 1]} title={s.strings.exchange_insufficient_funds} message={s.strings.exchange_insufficient_funds_below_balance} type="error" />
+      )
+    }
+
     return null
   }
 
