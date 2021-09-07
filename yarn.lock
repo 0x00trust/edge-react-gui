@@ -4763,10 +4763,9 @@ ed25519@0.0.4:
     bindings "^1.2.1"
     nan "^2.0.9"
 
-edge-core-js@^0.18.5:
+"edge-core-js@https://github.com/EdgeApp/edge-core-js.git#sam/origin-null":
   version "0.18.5"
-  resolved "https://registry.yarnpkg.com/edge-core-js/-/edge-core-js-0.18.5.tgz#afbc41603d7bad62f094b82049090e0cc8da2b02"
-  integrity sha512-qG949aPLBcekdtlLUYPevJl+NVqNzvUHlCNP5J1ec0cVyOAnkZTqSANqT6pz2YJ/l/rUMsaGQR4aIu+hslDA6A==
+  resolved "https://github.com/EdgeApp/edge-core-js.git#e40685699ac8cbd17d479e3418f92274dcc19142"
   dependencies:
     aes-js "^3.1.0"
     base-x "^1.0.4"
